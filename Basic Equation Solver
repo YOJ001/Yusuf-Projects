@@ -1,0 +1,93 @@
+z = "yes"
+while z == "yes":
+  b = input("Would you like help with the Pythagorean Theorem or the Quadratic Formula? ")
+
+  print("  ")
+
+  if b == "Pythagorean Theorem":
+    def pythag_thrm(b, c):
+      b = int(b)
+      c = int(c)
+      y = (c**2) - (b**2) 
+      y = y**(1/2) 
+      return y
+
+    def pythag_thrm1(a, c):  
+      a = int(a)
+      c = int(c)
+      y = (c**2) - (a**2) 
+      y = y**(1/2)
+      return y
+
+    def pythag_thrm2 (a, b): 
+      a = int(a)
+      b = int(b)
+      y = (a**2) + (b**2) 
+      y = y**(1/2)
+      return y
+
+
+    a, b, c = input("Please enter the values of a, b, and c separated by a space. Insert the varriable 'X' for any value not known: ").split()
+
+
+    if a == "X":
+      y = pythag_thrm(b, c)
+      print("  ")
+      print("The value of x is", y)
+    elif b == "X":
+      y = pythag_thrm1(a, c)
+      print("  ")
+      print("The value of x is", y)
+    elif c == "X": 
+      y = pythag_thrm2(a, b)
+      print("  ")
+      print("The value of x is", y)
+
+  elif b == "Quadratic Formula":  
+    def discriminant(a, b, c):
+      x = b ** 2
+      y = (4 * a * c) ** (1 / 2)
+      while (x - y) < 0: 
+        print("There are no real solutions to these numbers.")
+        v = input("Would you like to try again? (Y/N) ")
+        if v == "Y": 
+          a, b, c = input("Enter the values of a, b, and c: ").split()
+        elif v == "N":
+          exit()
+      return x - y
+
+    def numerator(b, d):
+      root = d ** (1/2) # square root of (b^2 - 4ac)
+      neg_b = -1 * b
+      n1 = neg_b + root
+      n2 = neg_b - root
+      return n1, n2
+  
+    def quad_formula(a, b, c):
+      d = discriminant(a, b, c)
+      n1, n2 = numerator(b, d)
+      pos_solution = n1 / (2 * a)
+      neg_solution = n2 / (2 * a)
+      return pos_solution, neg_solution
+
+    a, b, c = input("Enter the values of a, b, and c: ").split()
+
+    a = int(a)
+    b = int(b)
+    c = int(c)
+
+    pos_answer, neg_answer = quad_formula(a, b, c)
+
+    print("Solutions are", pos_answer, "and", neg_answer)
+
+  print("  ") 
+
+  c = input("Would you help with another problem? (Y/N) ") 
+
+  if c == "Y":
+    print("  ")
+    
+  elif c == "N": 
+    print("  ")
+    print("Okay, have a good day!")
+    z = "no"
